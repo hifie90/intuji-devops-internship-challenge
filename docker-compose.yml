@@ -1,0 +1,6 @@
+version: '3'
+services:
+  web:
+    image: pras33/prasansha:latest
+    ports:
+      - "8082:80"

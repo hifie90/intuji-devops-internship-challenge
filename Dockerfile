@@ -11,7 +11,7 @@ COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html/
 
 # Expose port 80 (HTTP)
-EXPOSE 80
+EXPOSE 82
 
 # Set the directory index to index.php (or index.html)
 RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/apache2.conf
