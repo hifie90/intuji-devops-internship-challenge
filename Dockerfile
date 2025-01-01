@@ -25,3 +25,29 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Start the Apache server
 CMD ["apache2-foreground"]
+
+
+# #----------------------For nginx-------------------------
+# # Stage 1: Build PHP with required extensions
+# FROM php:8.0-fpm as php-fpm
+
+# # Install required PHP extensions
+# RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# # Stage 2: Set up NGINX
+# FROM nginx:latest
+
+# # Copy NGINX configuration file
+# COPY nginx.conf /etc/nginx/nginx.conf
+
+# # Copy the PHP files from the PHP-FPM stage to the nginx web root
+# COPY --from=php-fpm /var/www/html /usr/share/nginx/html
+
+# # Set permissions for the web server
+# RUN chown -R www-data:www-data /usr/share/nginx/html
+
+# # Expose port 80 for NGINX
+# EXPOSE 80
+
+# # Start nginx server
+# CMD ["nginx", "-g", "daemon off;"]
